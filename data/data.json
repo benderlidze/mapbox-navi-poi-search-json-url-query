@@ -1,0 +1,300 @@
+{
+  "lat": 40.760631769817024,
+  "lng": -74.00168401977595,
+  "logoUrl": "https://www.storawasby.se/img/logga.gif",
+  "geojson": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "properties": {
+          "title": "Favourite Cafes 1",
+          "message": "Small Batch Goldstone Villa: Hurry to grab one of their lovely cafes, they are shutting down all the Small Batches.",
+          "iconSize": [60, 60],
+          "iconImage": "https://www.brightonandhovenews.org/wp-content/uploads/2015/12/Small-Batch-70-Goldstone-Villas-Hove.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-74.00168401977595, 40.760631769817024]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Favourite Cafes 2",
+          "message": "Flour Pot Bakery – First Avenue: They take too long to make a coffee. ",
+          "iconSize": [60, 60],
+          "iconImage": "https://media-cdn.tripadvisor.com/media/photo-p/0d/9b/10/eb/the-flour-pot-bakery.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.16575682713645307, 50.826864396212294]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Favourite Cafes 3",
+          "message": "Bond St Coffee: Lovely coffee in central Brighton ",
+          "iconSize": [40, 40],
+          "iconImage": "https://cdn.shopify.com/s/files/1/0877/3614/files/PA180077_1024x1024.jpg "
+        },
+        "geometry": {
+          "type": "Point",
+
+          "coordinates": [-0.13996349643125086, 50.8240321970962]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Favourite Cafes 4",
+          "message": "The Garden Café: Spot for icecream with the little ones",
+          "iconSize": [40, 40],
+          "iconImage": "https://media-cdn.tripadvisor.com/media/photo-s/07/d4/72/ca/the-garden-cafe.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+
+          "coordinates": [-0.1557975025517228, 50.83000240996724]
+        }
+      },
+
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Beginnings 1:",
+          "message": "Sussex Humanities Lab",
+          "iconSize": [50, 50],
+          "iconImage": "data:image/jpeg;base64,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"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.0900503187353117, 50.866771954124424]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Beginnings 2",
+          "message": "Beach: Where I chill and swim",
+          "iconSize": [40, 40],
+          "iconImage": "https://th.bing.com/th/id/OIP.WQiZ6_CeE9-j4AdLKWq0dAHaE6?pid=ImgDet&rs=1"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.12202, 50.81755]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Beginnings 3",
+          "message": "Sea side entertainment",
+          "iconSize": [40, 40],
+          "iconImage": "https://funstacker.com/wp-content/uploads/2021/10/eu-assets.simpleview-europe.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.137485, 50.81539]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Beginnings 4",
+          "message": "Brighton Pavilion, A place to visit",
+          "iconSize": [40, 40],
+          "iconImage": "https://upload.wikimedia.org/wikipedia/commons/6/69/Brighton_Royal_Pavilion.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.1376749806606639, 50.822271662013236]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Beginnings 5",
+          "message": "ACCA: A traumatic theatre performance",
+          "iconSize": [40, 40],
+          "iconImage": "https://th.bing.com/th/id/R.ad90e414a591c76bdffbde84d0ccf26a?rik=fhBs384Qx0FwKw&riu=http%3a%2f%2fwww.rhpartnership.co.uk%2fassets%2fuploads%2fimages%2fNews-ACCA2.jpg&ehk=J8M%2b5jfOzc%2fNSsEDdc6FXN8kcR3PdpopwOMuCUt4PFQ%3d&risl=&pid=ImgRaw&r=0 "
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.08884, 50.8647]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Beginnings 6",
+          "message": "Kemptown: A place to live",
+          "iconSize": [40, 40],
+          "iconImage": "https://media.thetab.com/blogs.dir/32/files/2017/02/4203032-ae35d4a1.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.11967, 50.81996]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Valcon 1:",
+          "message": "Ohso Social: Bar on seafront, great view of the Channel, Great range of beers, wines and cocktails. Brunch, breakfast and lunch",
+          "iconSize": [40, 40],
+          "iconImage": "https://www.ohsobrighton.co.uk/wp-content/uploads/2023/03/replace-first-smaller-pic-ohso-by-day.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.1392672019837466, 50.819068229829554]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Valcon 2:",
+          "message": "Captain: Brighton’s famous fish and chips restaurant",
+          "iconSize": [40, 40],
+          "iconImage": "https://static.wixstatic.com/media/c22daf_89c9d24942214a70a36a5aa47c63f28a~mv2.jpg/v1/fill/w_613,h_850,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/c22daf_89c9d24942214a70a36a5aa47c63f28a~mv2.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.13590275522948575, 50.8201024334815]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Valcon 3:",
+          "message": "Jungle Rumble minigolf by beach",
+          "iconSize": [40, 40],
+          "iconImage": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/f8/e4/b7/a-birds-eye-view.jpg?w=1200&h=1200&s=1"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.12135051831519814, 50.816796349290286]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Valcon 4:",
+          "message": "Preston Manor: Escape room sort of deal, but for up to 18 people somehow",
+          "iconSize": [40, 40],
+          "iconImage": "https://eu-assets.simpleview-europe.com/brighton2021/imageresizer/?image=%2Fdmsimgs%2FPreston-Manor-exterior_1754079842.jpg&action=ProductDetailImageFullWidthSite"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.1500956471497216, 50.84269526389193]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Valcon 5:",
+          "message": "Pier Nine Brighton: Karaoke",
+          "iconSize": [40, 40],
+          "iconImage": "https://static.designmynight.com/uploads/2019/08/Pier-Nine-will-create-a-%C2%A35.2m-entertainment-hub-on-Brightons-sea-front-with-work-game-eat-and-chill-in-mind-including-a-variety-of-retro-and-social-competitive-gaming.-optimised.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.1385355595202748, 50.81956707053698]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Valcon 6:",
+          "message": "Harvester: Swedish friend wants to try a full english breakfast",
+          "iconSize": [240, 40],
+          "iconImage": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Harvester_%28restaurant%29_logo.svg/800px-Harvester_%28restaurant%29_logo.svg.png"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.13494786824982924, 50.820782288094215]
+        }
+      },
+
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Swimming-sea-map 1:",
+          "message": "Wind Farm: offshore",
+          "iconSize": [40, 40],
+          "iconImage": "https://eu-assets.simpleview-europe.com/brighton2016/imageresizer/?image=%2Fdmsimgs%2Fturbines_1778403841.jpg&action=OpenGraph"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.234402, 50.739377]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Swimming-sea-map 2:",
+          "message": "Buoys: nearshore ",
+          "iconSize": [60, 60],
+          "iconImage": "https://i.pinimg.com/originals/23/50/cb/2350cb99cd2f1dfea7c470a2e5968178.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.119915, 50.815184]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Swimming-sea-map 3:",
+          "message": "Palace Pier: foreshore",
+          "iconSize": [60, 60],
+          "iconImage": "https://i.pinimg.com/originals/25/c4/08/25c408a98cbfe2eacb77be0ca0ea9c08.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.137287, 50.821067]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Swimming-sea-map 4:",
+          "message": "West Pier: foreshore. Landmark exposed in low-tide",
+          "iconSize": [80, 80],
+          "iconImage": " https://c2.staticflickr.com/4/3647/3466511767_0e649bf096_b.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.152111, 50.818937]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Swimming-sea-map 5:",
+          "message": "Marina: foreshore. Naked exposure",
+          "iconSize": [80, 80],
+          "iconImage": "https://i2-prod.kentlive.news/incoming/article2897580.ece/ALTERNATES/s810/0_NUDIST-BEACH.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.104932, 50.809737]
+        }
+      },
+
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "Swimming-sea-map 6:",
+          "message": "Chalk cliffs: backshore",
+          "iconSize": [80, 80],
+          "iconImage": "https://live.staticflickr.com/7315/9210176612_71df5e8396_z.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.075468, 50.802899]
+        }
+      }
+    ]
+  }
+}

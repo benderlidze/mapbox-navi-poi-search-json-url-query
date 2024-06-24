@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Change a map's style configuration property</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .mapboxgl-popup {
+        width: 300px;
+    }
+
+    #marker {
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1px solid white;
+    }
+
+    .popup-img {
+        max-width: 100%;
+    }
+
+    #menu {
+        position: absolute;
+        background: #efefef;
+        padding: 10px;
+        font-family: "Open Sans", sans-serif;
+    }
+
+    .mapboxgl-ctrl-top-left {
+        top: 100px !important;
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        font-family: "Open Sans", sans-serif;
+    }
+</style>
+
+<body>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        type="text/css">
+
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.3.1/mapbox-gl-directions.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.3.1/mapbox-gl-directions.css"
+        type="text/css">
+
+
+    <div id="map"></div>
+
+    <script>
+
+        const urlQuery = new URLSearchParams(window.location.search);
+        const lat = urlQuery.get('lat') || 50.8169
+        const lng = urlQuery.get('lng') || -0.1367
+        const itemFiles = urlQuery.get('file') || 'data.json';
+        const theme = urlQuery.get('theme') || null
+
+        mapboxgl.accessToken =
+            "pk.eyJ1IjoiY29zYWx1eCIsImEiOiJja2NraThwczkxdnBuMnhtMnp5Y2x1NjRjIn0.Ri6sI8WAdqNYoKVZOTyhBw";
+
+        const map = new mapboxgl.Map({
+            container: "map", // container ID
+            style: "mapbox://styles/mapbox/navigation-night-v1", // streetQuest style
+            center: [lng, lat],
+            zoom: 15.5, // starting zoom
+            pitch: 45,
+            bearing: -17.6,
+            container: "map",
+            antialias: true
+        });
+
+        map.addControl(
+            new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
+            }),
+            'top-right'
+        );
+
+        map.addControl(
+            new MapboxDirections({
+                accessToken: mapboxgl.accessToken
+            }),
+            'top-left'
+        );
+
+        map.on("style.load", () => {
+            // Insert the layer beneath any symbol layer.
+            const layers = map.getStyle().layers;
+            const labelLayerId = layers.find(
+                (layer) => layer.type === "symbol" && layer.layout["text-field"]
+            ).id;
+
+            // The 'building' layer in the Mapbox Streets
+            // vector tileset contains building height data
+            // from OpenStreetMap.
+            map.addLayer(
+                {
+                    id: "add-3d-buildings",
+                    source: "composite",
+                    "source-layer": "building",
+                    filter: ["==", "extrude", "true"],
+                    type: "fill-extrusion",
+                    minzoom: 15,
+                    paint: {
+                        "fill-extrusion-color": "#625152",
+
+                        // Use an 'interpolate' expression to
+                        // add a smooth transition effect to
+                        // the buildings as the user zooms in.
+                        "fill-extrusion-height": [
+                            "interpolate",
+                            ["linear"],
+                            ["zoom"],
+                            15,
+                            0,
+                            15.05,
+                            ["get", "height"]
+                        ],
+                        "fill-extrusion-base": [
+                            "interpolate",
+                            ["linear"],
+                            ["zoom"],
+                            15,
+                            0,
+                            15.05,
+                            ["get", "min_height"]
+                        ],
+                        "fill-extrusion-opacity": 0.9
+                    }
+                },
+                labelLayerId
+            );
+
+            fetch("data/data.json")
+                .then((response) => response.json())
+                .then((data) => {
+
+                    const { lat, lng } = data
+
+                    data.logoUrl && createLogo({ logoUrl: data.logoUrl });
+
+                    console.log('lat, lng', lat, lng);
+                    map.panTo([lng, lat]);
+
+                    data.geojson.features.forEach((item) => {
+                        const popup = new mapboxgl.Popup({ offset: 25 })
+                            .setHTML(
+                                `<div>
+                                    ${item.properties.title}  
+                                    <br/>
+                                    ${item.properties.message} 
+                                    <img class="popup-img" src="${item.properties.iconImage}"/>
+                                </div>
+                                `
+                            )
+                            .addTo(map);
+                        const markerImg = document.createElement("div");
+                        markerImg.id = "marker";
+                        markerImg.style.backgroundImage = `url('${item.properties.iconImage}')`;
+                        new mapboxgl.Marker(markerImg)
+                            .setLngLat(item.geometry.coordinates)
+                            .setPopup(popup)
+                            .addTo(map);
+                    })
+                })
+        });
+
+
+        function createLogo({ logoUrl }) {
+            const logo = document.createElement("div");
+            logo.className = "logo";
+
+            const img = document.createElement("img");
+            img.src = logoUrl
+            logo.appendChild(img);
+
+            document.body.appendChild(logo);
+        }
+    </script>
+</body>
+
+</html>
