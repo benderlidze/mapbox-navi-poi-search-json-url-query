@@ -56,6 +56,39 @@
         padding: 10px;
         font-family: "Open Sans", sans-serif;
     }
+
+    #filters {
+        position: absolute;
+        top: 60px;
+        left: 0px;
+        padding: 10px;
+        font-family: "Open Sans", sans-serif;
+        z-index: 100;
+
+        display: flex;
+        flex-direction: row;
+    }
+
+    .filter-item {
+        display: flex;
+        padding: 5px 10px;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        color: white;
+        width: 90px;
+        cursor: pointer;
+        /* border-bottom: 3px solid transparent; */
+    }
+
+    .selected {
+        box-shadow: inset 0 -3px 0 0 white;
+    }
+
+    .filter-icon {
+        width: 20px;
+        height: 20px;
+    }
 </style>
 
 <body>
@@ -72,24 +105,33 @@
         type="text/css">
 
 
+    <div id="filters"></div>
     <div id="map"></div>
 
     <script>
+        const filtersDiv = document.getElementById("filters");
+
 
         const urlQuery = new URLSearchParams(window.location.search);
-        const lat = urlQuery.get('lat') || 50.8169
-        const lng = urlQuery.get('lng') || -0.1367
-        const itemFiles = urlQuery.get('file') || 'data.json';
-        const theme = urlQuery.get('theme') || null
+        const lat = urlQuery.get('lat') || 40.760631769817024
+        const lng = urlQuery.get('lng') || -74.00268401977595
+        const theme = urlQuery.get('theme') || 'data.json'
+
+        const appData = {
+            filterSelected: null,
+            allMarkers: []
+        }
 
         mapboxgl.accessToken =
             "pk.eyJ1IjoiY29zYWx1eCIsImEiOiJja2NraThwczkxdnBuMnhtMnp5Y2x1NjRjIn0.Ri6sI8WAdqNYoKVZOTyhBw";
+
+        console.log('lat,lng', lat, lng);
 
         const map = new mapboxgl.Map({
             container: "map", // container ID
             style: "mapbox://styles/mapbox/navigation-night-v1", // streetQuest style
             center: [lng, lat],
-            zoom: 15.5, // starting zoom
+            zoom: 10, // starting zoom
             pitch: 45,
             bearing: -17.6,
             container: "map",
@@ -97,16 +139,17 @@
         });
 
         map.addControl(
-            new MapboxGeocoder({
+            new MapboxDirections({
                 accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
+                profile: 'mapbox/walking'
             }),
-            'top-right'
+            'top-left'
         );
 
         map.addControl(
-            new MapboxDirections({
-                accessToken: mapboxgl.accessToken
+            new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
             }),
             'top-left'
         );
@@ -159,16 +202,13 @@
                 labelLayerId
             );
 
-            fetch("data/data.json")
+            fetch("data/" + theme)
                 .then((response) => response.json())
                 .then((data) => {
 
-                    const { lat, lng } = data
-
                     data.logoUrl && createLogo({ logoUrl: data.logoUrl });
 
-                    console.log('lat, lng', lat, lng);
-                    map.panTo([lng, lat]);
+                    //map.panTo([lng, lat]);
 
                     data.geojson.features.forEach((item) => {
                         const popup = new mapboxgl.Popup({ offset: 25 })
@@ -185,10 +225,11 @@
                         const markerImg = document.createElement("div");
                         markerImg.id = "marker";
                         markerImg.style.backgroundImage = `url('${item.properties.iconImage}')`;
-                        new mapboxgl.Marker(markerImg)
+                        const marker = new mapboxgl.Marker(markerImg)
                             .setLngLat(item.geometry.coordinates)
                             .setPopup(popup)
                             .addTo(map);
+                        appData.allMarkers.push({ marker, type: item.properties.type })
                     })
                 })
         });
@@ -203,6 +244,70 @@
             logo.appendChild(img);
 
             document.body.appendChild(logo);
+        }
+
+        buildFilters({
+            filterFunction: (filter) => {
+                console.log('filter', filter);
+                appData.allMarkers.forEach(({ marker, type }) => {
+
+                    if (type && type.toLowerCase() === filter.toLowerCase()) {
+                        marker.addTo(map)
+                    } else {
+                        marker.remove()
+                    }
+
+                })
+            }
+        })
+
+        function buildFilters({ filterFunction }) {
+
+            const filters = [
+                { name: "Eat", color: "#df691a", svgIcon: "/data/icons/food-svgrepo-com.svg" },
+                { name: "Do", color: "#5bc0de", svgIcon: "/data/icons/plane-svgrepo-com.svg" },
+                { name: "Quick tip", color: "#d9534f", svgIcon: "/data/icons/pin-sharp-circle-624-svgrepo-com.svg" },
+                { name: "See", color: "#5cb85c", svgIcon: "/data/icons/photo-svgrepo-com.svg" },
+            ]
+
+            const filtersItems = filters.map(item => {
+
+                const filter = document.createElement("div");
+                filter.className = "filter-item";
+                filter.style.backgroundColor = item.color;
+
+                const text = document.createElement("span");
+                text.innerHTML = item.name;
+                filter.appendChild(text);
+
+                const img = document.createElement("img");
+                img.src = item.svgIcon
+                img.style.filter = "invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%)";
+                img.className = "filter-icon";
+                filter.appendChild(img);
+
+                filter.onclick = () => {
+                    console.log('filter', item.name);
+                    appData.filterSelected = item.name
+                    filter.classList.add("selected")
+                    if (typeof filterFunction === 'function') {
+                        filterFunction(item.name)
+                    }
+
+                    //reset border
+                    filtersItems.forEach(filterItem => {
+                        if (filterItem !== filter) {
+                            filterItem.classList.remove("selected")
+                        }
+                    })
+                }
+
+                filtersDiv.appendChild(filter);
+                return filter
+            })
+
+
+            return filtersItems
         }
     </script>
 </body>

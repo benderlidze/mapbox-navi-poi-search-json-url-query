@@ -1,0 +1,35 @@
+{
+  "logoUrl": "https://www.storawasby.se/img/logga.gif",
+  "geojson": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "properties": {
+          "type": "eat",
+          "title": "Favourite Cafes 1",
+          "message": "Small Batch Goldstone Villa: Hurry to grab one of their lovely cafes, they are shutting down all the Small Batches.",
+          "iconSize": [60, 60],
+          "iconImage": "https://www.brightonandhovenews.org/wp-content/uploads/2015/12/Small-Batch-70-Goldstone-Villas-Hove.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-75.00168401977595, 40.760631769817024]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "type": "do",
+          "title": "Favourite Cafes 2",
+          "message": "Flour Pot Bakery – First Avenue: They take too long to make a coffee. ",
+          "iconSize": [60, 60],
+          "iconImage": "https://media-cdn.tripadvisor.com/media/photo-p/0d/9b/10/eb/the-flour-pot-bakery.jpg"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-75.00268401977595, 40.760631769817024]
+        }
+      }
+    ]
+  }
+}

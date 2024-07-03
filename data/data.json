@@ -1,12 +1,11 @@
 {
-  "lat": 40.760631769817024,
-  "lng": -74.00168401977595,
   "logoUrl": "https://www.storawasby.se/img/logga.gif",
   "geojson": {
     "type": "FeatureCollection",
     "features": [
       {
         "properties": {
+          "type": "eat",
           "title": "Favourite Cafes 1",
           "message": "Small Batch Goldstone Villa: Hurry to grab one of their lovely cafes, they are shutting down all the Small Batches.",
           "iconSize": [60, 60],
@@ -20,6 +19,7 @@
       {
         "type": "Feature",
         "properties": {
+          "type": "eat",
           "title": "Favourite Cafes 2",
           "message": "Flour Pot Bakery – First Avenue: They take too long to make a coffee. ",
           "iconSize": [60, 60],
@@ -27,12 +27,13 @@
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-0.16575682713645307, 50.826864396212294]
+          "coordinates": [-74.00268401977595, 40.760631769817024]
         }
       },
       {
         "type": "Feature",
         "properties": {
+          "type": "see",
           "title": "Favourite Cafes 3",
           "message": "Bond St Coffee: Lovely coffee in central Brighton ",
           "iconSize": [40, 40],
@@ -41,12 +42,13 @@
         "geometry": {
           "type": "Point",
 
-          "coordinates": [-0.13996349643125086, 50.8240321970962]
+          "coordinates": [-74.00468401977595, 40.764631769817024]
         }
       },
       {
         "type": "Feature",
         "properties": {
+          "type": "quick tip",
           "title": "Favourite Cafes 4",
           "message": "The Garden Café: Spot for icecream with the little ones",
           "iconSize": [40, 40],
@@ -54,14 +56,14 @@
         },
         "geometry": {
           "type": "Point",
-
-          "coordinates": [-0.1557975025517228, 50.83000240996724]
+          "coordinates": [-74.00368401977595, 40.764631769817024]
         }
       },
 
       {
         "type": "Feature",
         "properties": {
+          "type": "do",
           "title": "Beginnings 1:",
           "message": "Sussex Humanities Lab",
           "iconSize": [50, 50],
@@ -69,25 +71,13 @@
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-0.0900503187353117, 50.866771954124424]
+          "coordinates": [-74.00068401977595, 40.764631769817024]
         }
       },
       {
         "type": "Feature",
         "properties": {
-          "title": "Beginnings 2",
-          "message": "Beach: Where I chill and swim",
-          "iconSize": [40, 40],
-          "iconImage": "https://th.bing.com/th/id/OIP.WQiZ6_CeE9-j4AdLKWq0dAHaE6?pid=ImgDet&rs=1"
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [-0.12202, 50.81755]
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
+          "type": "eat",
           "title": "Beginnings 3",
           "message": "Sea side entertainment",
           "iconSize": [40, 40],
@@ -95,7 +85,7 @@
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-0.137485, 50.81539]
+          "coordinates": [-74.00058401977595, 40.763331769817024]
         }
       },
       {
