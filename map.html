@@ -143,18 +143,25 @@
             antialias: true
         });
 
-        map.addControl(
-            new MapboxDirections({
-                accessToken: mapboxgl.accessToken,
-                profile: 'mapbox/walking'
-            }),
-            'top-left'
-        );
+        const directions = new MapboxDirections({
+            accessToken: mapboxgl.accessToken,
+            profile: 'mapbox/walking'
+        });
+        map.addControl(directions, 'top-left');
+        if (lat && lng) {
+            directions.setOrigin([lng, lat]);
+        }
+
+
 
         map.addControl(
             new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
+                mapboxgl: mapboxgl,
+                proximity: {
+                    longitude: -122.4194, // Example: San Francisco
+                    latitude: 37.7749
+                }
             }),
             'top-left'
         );
