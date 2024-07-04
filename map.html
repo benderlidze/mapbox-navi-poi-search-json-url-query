@@ -115,6 +115,7 @@
         const urlQuery = new URLSearchParams(window.location.search);
         const lat = urlQuery.get('lat') || 40.760631769817024
         const lng = urlQuery.get('lng') || -74.00268401977595
+        const zoom = urlQuery.get('zoom') || 13
         const theme = urlQuery.get('theme') || 'data.json'
 
         const appData = {
@@ -131,7 +132,7 @@
             container: "map", // container ID
             style: "mapbox://styles/mapbox/navigation-night-v1", // streetQuest style
             center: [lng, lat],
-            zoom: 13, // starting zoom
+            zoom: zoom, // starting zoom
             pitch: 45,
             bearing: -17.6,
             container: "map",
